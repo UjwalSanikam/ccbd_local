@@ -1,0 +1,32 @@
+{
+    "dataset_version": "1.0",
+    "annotator": "your name",
+    "annotation_date": "2025-06-24",
+    "cases": [
+        {
+            "case_id": "EVAL-001",
+            "pitch_file": "raw/pitch_decks/EVAL_001_pitch.pdf",
+            "repo_dir": "raw/repos/startup_A",
+            "patent_files": [
+                "raw/patents/US10123456_abstract.txt",
+                "raw/patents/US09876543_abstract.txt"
+            ],
+            "ground_truth": true,
+            "risk_category": "Proprietary Claim Mismatch",
+            "expected_evidence": "Startup claims proprietary auth but repo imports flask_login",
+            "notes": "Clear contradiction. Manually verified."
+        },
+        {
+            "case_id": "EVAL-002",
+            "pitch_file": "raw/pitch_decks/EVAL_002_pitch.pdf",
+            "repo_dir": "raw/repos/startup_B",
+            "patent_files": [
+                "raw/patents/US10123456_abstract.txt"
+            ],
+            "ground_truth": false,
+            "risk_category": null,
+            "expected_evidence": null,
+            "notes": "Clean case. Startup uses only permissive MIT deps, no IP overlap."
+        }
+    ]
+}

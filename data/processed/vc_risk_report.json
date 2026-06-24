@@ -1,0 +1,52 @@
+{
+  "identified_risks": [
+    {
+      "severity": "MODERATE",
+      "category": "OpenSource_License",
+      "target_entity": "PSF-2.0 (Permissive - Safe)",
+      "confidence_score": 0.45,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 PSF-2.0 (Permissive - Safe)"
+    },
+    {
+      "severity": "MODERATE",
+      "category": "Patent_Concept",
+      "target_entity": "The hashing module",
+      "confidence_score": 0.45,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 The hashing module"
+    },
+    {
+      "severity": "MODERATE",
+      "category": "Patent_Concept",
+      "target_entity": "a cryptographic hashing module",
+      "confidence_score": 0.45,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 a cryptographic hashing module"
+    },
+    {
+      "severity": "MODERATE",
+      "category": "Patent_Concept",
+      "target_entity": "the user password",
+      "confidence_score": 0.405,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 The hashing module \u2794 the user password"
+    },
+    {
+      "severity": "CRITICAL",
+      "category": "Proprietary Claim Mismatch",
+      "target_entity": "hashlib",
+      "confidence_score": 0.95,
+      "recommended_action": "Technical Clarification: Require founders to explain the discrepancy.",
+      "evidence_chain": "Marketing Pitch: 'Company: ExpenseNinja Core Technology: Our platfor...' \u2794 Review Indicator: 'hashlib'"
+    },
+    {
+      "severity": "CRITICAL",
+      "category": "Proprietary Claim Mismatch",
+      "target_entity": "copyleft_crypto_engine",
+      "confidence_score": 0.95,
+      "recommended_action": "Technical Clarification: Require founders to explain the discrepancy.",
+      "evidence_chain": "Marketing Pitch: 'Company: ExpenseNinja Core Technology: Our platfor...' \u2794 Review Indicator: 'copyleft_crypto_engine'"
+    }
+  ]
+}

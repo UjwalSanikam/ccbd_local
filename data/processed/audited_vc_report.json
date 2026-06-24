@@ -1,0 +1,70 @@
+{
+  "audited_risks": [
+    {
+      "traceability_id": "TRC-612390E51EC7-1782276249",
+      "timestamp": "2026-06-24T04:44:09Z",
+      "severity": "MODERATE",
+      "category": "OpenSource_License",
+      "target_entity": "PSF-2.0 (Permissive - Safe)",
+      "formal_confidence": 0.45,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 PSF-2.0 (Permissive - Safe)",
+      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
+    },
+    {
+      "traceability_id": "TRC-E8C1C78BDD62-1782276249",
+      "timestamp": "2026-06-24T04:44:09Z",
+      "severity": "MODERATE",
+      "category": "Patent_Concept",
+      "target_entity": "The hashing module",
+      "formal_confidence": 0.45,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 The hashing module",
+      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
+    },
+    {
+      "traceability_id": "TRC-5B579BDAD0B3-1782276249",
+      "timestamp": "2026-06-24T04:44:09Z",
+      "severity": "MODERATE",
+      "category": "Patent_Concept",
+      "target_entity": "a cryptographic hashing module",
+      "formal_confidence": 0.45,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 a cryptographic hashing module",
+      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
+    },
+    {
+      "traceability_id": "TRC-74FFA74E9075-1782276249",
+      "timestamp": "2026-06-24T04:44:09Z",
+      "severity": "MODERATE",
+      "category": "Patent_Concept",
+      "target_entity": "the user password",
+      "formal_confidence": 0.405,
+      "recommended_action": "Standard review.",
+      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 The hashing module \u2794 the user password",
+      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
+    },
+    {
+      "traceability_id": "TRC-94208FDDE20D-1782276249",
+      "timestamp": "2026-06-24T04:44:09Z",
+      "severity": "CRITICAL",
+      "category": "Proprietary Claim Mismatch",
+      "target_entity": "hashlib",
+      "formal_confidence": 0.95,
+      "recommended_action": "Technical Clarification: Require founders to explain the discrepancy.",
+      "evidence_chain": "Marketing Pitch: 'Company: ExpenseNinja Core Technology: Our platfor...' \u2794 Review Indicator: 'hashlib'",
+      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
+    },
+    {
+      "traceability_id": "TRC-27F00515AD76-1782276249",
+      "timestamp": "2026-06-24T04:44:09Z",
+      "severity": "CRITICAL",
+      "category": "Proprietary Claim Mismatch",
+      "target_entity": "copyleft_crypto_engine",
+      "formal_confidence": 0.95,
+      "recommended_action": "Technical Clarification: Require founders to explain the discrepancy.",
+      "evidence_chain": "Marketing Pitch: 'Company: ExpenseNinja Core Technology: Our platfor...' \u2794 Review Indicator: 'copyleft_crypto_engine'",
+      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
+    }
+  ]
+}

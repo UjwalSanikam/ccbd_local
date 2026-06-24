@@ -1,0 +1,57 @@
+{
+  "evidence_objects": [
+    {
+      "claim_id": "Claim_0: Company: ExpenseNinja Core Tec...",
+      "claim_text": "Company: ExpenseNinja Core Technology: Our platform uses a proprietary, military-grade\n cryptographic hashing module to secure user transaction ledgers locally without relying on open-\n source authentication.",
+      "risk_node": "PSF-2.0 (Permissive - Safe)",
+      "risk_type": "OpenSource_License",
+      "path_length": 2,
+      "confidence_score": 0.377,
+      "reasoning_path": [
+        "Claim_0: Company: ExpenseNinja Core Tec...",
+        "hashlib",
+        "PSF-2.0 (Permissive - Safe)"
+      ]
+    },
+    {
+      "claim_id": "Claim_0: Company: ExpenseNinja Core Tec...",
+      "claim_text": "Company: ExpenseNinja Core Technology: Our platform uses a proprietary, military-grade\n cryptographic hashing module to secure user transaction ledgers locally without relying on open-\n source authentication.",
+      "risk_node": "The hashing module",
+      "risk_type": "Patent_Concept",
+      "path_length": 2,
+      "confidence_score": 0.293,
+      "reasoning_path": [
+        "Claim_0: Company: ExpenseNinja Core Tec...",
+        "hashlib",
+        "The hashing module"
+      ]
+    },
+    {
+      "claim_id": "Claim_0: Company: ExpenseNinja Core Tec...",
+      "claim_text": "Company: ExpenseNinja Core Technology: Our platform uses a proprietary, military-grade\n cryptographic hashing module to secure user transaction ledgers locally without relying on open-\n source authentication.",
+      "risk_node": "a cryptographic hashing module",
+      "risk_type": "Patent_Concept",
+      "path_length": 2,
+      "confidence_score": 0.261,
+      "reasoning_path": [
+        "Claim_0: Company: ExpenseNinja Core Tec...",
+        "hashlib",
+        "a cryptographic hashing module"
+      ]
+    },
+    {
+      "claim_id": "Claim_0: Company: ExpenseNinja Core Tec...",
+      "claim_text": "Company: ExpenseNinja Core Technology: Our platform uses a proprietary, military-grade\n cryptographic hashing module to secure user transaction ledgers locally without relying on open-\n source authentication.",
+      "risk_node": "the user password",
+      "risk_type": "Patent_Concept",
+      "path_length": 3,
+      "confidence_score": 0.25,
+      "reasoning_path": [
+        "Claim_0: Company: ExpenseNinja Core Tec...",
+        "hashlib",
+        "The hashing module",
+        "the user password"
+      ]
+    }
+  ]
+}

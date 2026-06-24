@@ -1,16 +1,42 @@
-# Virtual Environment
+# ==========================================
+# Python Environments & Cache
+# ==========================================
 venv/
+env/
 .venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
-# Data & Storage (Crucial for CCBD projects)
-data/raw/
-data/processed/
-.env
+# ==========================================
+# Data Directories (Crucial for Big Data)
+# ==========================================
+# We ignore the heavy raw data and processed logs to save GitHub storage.
+data/raw/*
+data/processed/*
 
-# IDEs and OS
-.vscode/
-.idea/
+# EXCEPTIONS: Keep the folder structures intact using .gitkeep files
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# EXCEPTIONS: Un-comment these if you WANT your professor to see your final output JSONs on GitHub
+!data/processed/audited_vc_report.json
+!data/processed/structured_evidence.json
+!data/processed/vc_risk_report.json
+!data/ground_truth.json
+
+# ==========================================
+# Logs & Databases
+# ==========================================
+*.log
+*.sqlite3
+.chroma/
+
+# ==========================================
+# OS & IDE Files
+# ==========================================
 .DS_Store
 Thumbs.db
+.vscode/
+.idea/
