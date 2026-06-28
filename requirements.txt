@@ -1,10 +1,36 @@
-# Core Data Handling & Processing
-pypdf==4.2.0
-networkx==3.3
-pydantic==2.7.4
+# Core graph and data
+networkx>=3.0
+numpy>=1.24.0
+pydantic>=2.0.0
 
-# Environment Management
-python-dotenv==1.0.1
+# PDF parsing (whitepaper_parser.py — three-tier extraction)
+pypdf>=3.15.0
+pdfplumber>=0.10.0
+pytesseract>=0.3.10
+Pillow>=10.0.0
+
+# NLP and embeddings
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4
+
+# Patent API and HTTP
+requests>=2.31.0
+
+# LLM — primary question generation
+anthropic>=0.7.0
+
+# Python TOML parsing (github_parser.py reads pyproject.toml)
+tomli>=2.0.0; python_version < "3.11"
+
+# Graph export
+# networkx handles GraphML natively — no extra package needed
+
+# Environment
+python-dotenv>=1.0.0
+
+# Utilities
+difflib is stdlib — no install needed
+hashlib is stdlib — no install needed
 
 # Testing
-pytest==8.2.2
+pytest>=8.2.2

@@ -3,6 +3,8 @@ import logging
 from pathlib import Path
 import networkx as nx
 
+from scoring.confidence_engine import ConfidenceEngine
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger(__name__)
 
@@ -20,6 +22,22 @@ CONTRADICTION_TAXONOMY = {
     "database": {
         "marketing_triggers": ["custom ledger", "proprietary database", "in-house storage"],
         "prohibited_imports": ["sqlite3", "pymongo", "sqlalchemy", "redis"]
+    },
+    "signature": {
+        "marketing_triggers": ["proprietary signature", "custom ECDSA", "in-house signing", "novel elliptic curve"],
+        "prohibited_imports": ["ecdsa", "cryptography", "pyOpenSSL", "py_ecc"]
+    },
+    "token": {
+        "marketing_triggers": ["proprietary token", "custom JWT", "in-house authentication token"],
+        "prohibited_imports": ["jwt", "PyJWT", "python_jose"]
+    },
+    "hashing": {
+        "marketing_triggers": ["proprietary hashing", "secret hash", "custom SHA", "novel digest"],
+        "prohibited_imports": ["hashlib", "pysha3", "sha3", "blake2"]
+    },
+    "password": {
+        "marketing_triggers": ["proprietary password", "custom bcrypt", "in-house key derivation"],
+        "prohibited_imports": ["bcrypt", "passlib", "argon2"]
     }
 }
 
@@ -27,10 +45,11 @@ class ProprietaryContradictionDetector:
     def __init__(self, data_dir: Path):
         self.data_dir = data_dir
         self.G = nx.DiGraph()
+        self.confidence = ConfidenceEngine()
         self.load_graph()
 
     def load_graph(self):
-        graph_path = self.data_dir / "processed" / "fused_knowledge_graph.json"
+        graph_path = self.data_dir / "fused_knowledge_graph.json"
         if not graph_path.exists():
             logger.error("fused_knowledge_graph.json not found.")
             return
@@ -61,17 +80,23 @@ class ProprietaryContradictionDetector:
                             
                             logger.warning(f"🚨 CONTRADICTION CAUGHT: Claimed proprietary '{category}', but used '{module}'.")
                             
+                            confidence, severity = self.confidence.compute_risk_metrics(
+                                category="Proprietary Claim Mismatch",
+                                path_length=1,
+                                base_similarity=0.99,
+                            )
                             discovered_contradictions.append({
                                 "risk_type": "Proprietary Claim Mismatch",
-                                "severity": "HIGH",
+                                "severity": severity,
                                 "claim_id": claim,
                                 "claim_text": self.G.nodes[claim].get("full_text", claim),
                                 "contradictory_module": module,
-                                "confidence_score": 0.99, # Deterministic codebase match
+                                "confidence_score": confidence,
+                                "confidence_model": "ConfidenceEngine",
                                 "recommended_action": f"Founder Interrogation: Demand explanation for why an open-source '{category}' library ({module}) is being marketed as proprietary IP."
                             })
 
-        output_path = self.data_dir / "processed" / "contradiction_evidence.json"
+        output_path = self.data_dir / "contradiction_evidence.json"
         output_path.write_text(json.dumps({"contradictions": discovered_contradictions}, indent=2), encoding="utf-8")
         logger.info(f"Exported {len(discovered_contradictions)} Proprietary Contradictions to → {output_path}")
 

@@ -1,69 +1,342 @@
 {
-  "audited_risks": [
+  "audited_items": [
     {
-      "traceability_id": "TRC-612390E51EC7-1782276249",
-      "timestamp": "2026-06-24T04:44:09Z",
-      "severity": "MODERATE",
-      "category": "OpenSource_License",
-      "target_entity": "PSF-2.0 (Permissive - Safe)",
-      "formal_confidence": 0.45,
-      "recommended_action": "Standard review.",
-      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 PSF-2.0 (Permissive - Safe)",
+      "traceability_id": "TRC-7394B6801A86-1782646365",
+      "timestamp": "2026-06-28T11:32:45Z",
+      "severity": "UNKNOWN",
+      "category": "ip_conflict",
+      "target_entity": null,
+      "question": "Given your whitepaper's claims of a proprietary ECDSA signature verification engine on page one, which you state does not depend on any third-party cryptographic libraries, yet it utilizes 'ecdsa', how do you justify this in light of Patent CN110138567B (US11456789), held by CompetitorX Inc. and currently active under U.S. jurisdiction with a high legal risk flag, that covers similar ECDSA-based collaborative signing methods using random number generators for key generation? Can you provide evidence of freedom-to-operate or the necessary license to operate without infringement?",
+      "formal_confidence": 0.4866,
+      "recommended_action": "Review the generated question and provenance for auditor follow-up.",
+      "evidence_chain": {
+        "nodes": [
+          {
+            "node_id": "claim_0005",
+            "node_type": "Claim",
+            "label": "claim_0005",
+            "metadata": {
+              "text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "full_text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "claim_type": "security",
+              "confidence": 0.65,
+              "page": 1
+            }
+          },
+          {
+            "node_id": "ecdsa",
+            "node_type": "Library",
+            "label": "ecdsa",
+            "metadata": {
+              "category": "Utility / Other",
+              "ecosystem": "PyPI"
+            }
+          },
+          {
+            "node_id": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "node_type": "Patent",
+            "label": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "metadata": {
+              "patent_id": "patent_CN110138567B",
+              "assignee": "CompetitorX Inc.",
+              "jurisdiction": "US",
+              "status": "ACTIVE",
+              "legal_risk_flag": true,
+              "risk": "high"
+            }
+          },
+          {
+            "node_id": "k by using a random number generatorA\u2208ZqAnd calculating RA\uff1dkAG, then k isA,RAWrite back to parameter PtKAIn (1), the server S generates k by using a random number generatorS,b0\u2208ZqAnd Figure FDA0003275192910000042 and the following calculations were performed: b1\uff1dkS -1mod q\uff1b Figure FDA0003275192910000041 otxS\uff1d(xS-b0\u00d7kS)mod q\uff1b then k is putS,exA,otxSWrite back to parameter PtKSIn (1)",
+            "node_type": "Patent",
+            "label": "k by using a random number generatorA\u2208ZqAnd calculating RA\uff1dkAG, then k isA,RAWrite back to parameter PtKAIn (1), the server S generates k by using a random number generatorS,b0\u2208ZqAnd Figure FDA0003275192910000042 and the following calculations were performed: b1\uff1dkS -1mod q\uff1b Figure FDA0003275192910000041 otxS\uff1d(xS-b0\u00d7kS)mod q\uff1b then k is putS,exA,otxSWrite back to parameter PtKSIn (1)",
+            "metadata": {
+              "patent_id": "patent_CN110138567B",
+              "assignee": "CompetitorX Inc.",
+              "jurisdiction": "US",
+              "status": "ACTIVE",
+              "legal_risk_flag": true,
+              "risk": "high"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "claim_0005",
+            "to": "ecdsa",
+            "edge_type": "IMPLEMENTED_BY",
+            "weight": 0.5294,
+            "entity_a": null,
+            "entity_b": null
+          },
+          {
+            "from": "ecdsa",
+            "to": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "edge_type": "SIMILAR_TO",
+            "weight": 0.5226,
+            "entity_a": null,
+            "entity_b": null
+          },
+          {
+            "from": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "to": "k by using a random number generatorA\u2208ZqAnd calculating RA\uff1dkAG, then k isA,RAWrite back to parameter PtKAIn (1), the server S generates k by using a random number generatorS,b0\u2208ZqAnd Figure FDA0003275192910000042 and the following calculations were performed: b1\uff1dkS -1mod q\uff1b Figure FDA0003275192910000041 otxS\uff1d(xS-b0\u00d7kS)mod q\uff1b then k is putS,exA,otxSWrite back to parameter PtKSIn (1)",
+            "edge_type": "generates",
+            "weight": null,
+            "entity_a": null,
+            "entity_b": null
+          }
+        ],
+        "hop_count": 3
+      },
       "audit_status": "MACHINE_ASSISTED_VERIFICATION"
     },
     {
-      "traceability_id": "TRC-E8C1C78BDD62-1782276249",
-      "timestamp": "2026-06-24T04:44:09Z",
-      "severity": "MODERATE",
-      "category": "Patent_Concept",
-      "target_entity": "The hashing module",
-      "formal_confidence": 0.45,
-      "recommended_action": "Standard review.",
-      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 The hashing module",
+      "traceability_id": "TRC-A149AC05D20E-1782646365",
+      "timestamp": "2026-06-28T11:32:45Z",
+      "severity": "UNKNOWN",
+      "category": "ip_conflict",
+      "target_entity": null,
+      "question": "Given your startup's custom ECDSA signature verification engine is claimed to be entirely in-house developed without third-party cryptographic libraries (Claim 2 - page=1), can you provide a detailed freedom-to-operate analysis, or if not already done, an opinion from legal counsel confirming that your implementation does not infringe upon the active US patent with ID patent_CN110138567B held by CompetitorX Inc. (LEGAL RISK FLAGGED)?",
+      "formal_confidence": 0.5102,
+      "recommended_action": "Review the generated question and provenance for auditor follow-up.",
+      "evidence_chain": {
+        "nodes": [
+          {
+            "node_id": "claim_0005",
+            "node_type": "Claim",
+            "label": "claim_0005",
+            "metadata": {
+              "text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "full_text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "claim_type": "security",
+              "confidence": 0.65,
+              "page": 1
+            }
+          },
+          {
+            "node_id": "ecdsa",
+            "node_type": "Library",
+            "label": "ecdsa",
+            "metadata": {
+              "category": "Utility / Other",
+              "ecosystem": "PyPI"
+            }
+          },
+          {
+            "node_id": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "node_type": "Patent",
+            "label": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "metadata": {
+              "patent_id": "patent_CN110138567B",
+              "assignee": "CompetitorX Inc.",
+              "jurisdiction": "US",
+              "status": "ACTIVE",
+              "legal_risk_flag": true,
+              "risk": "high"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "claim_0005",
+            "to": "ecdsa",
+            "edge_type": "IMPLEMENTED_BY",
+            "weight": 0.5294,
+            "entity_a": null,
+            "entity_b": null
+          },
+          {
+            "from": "ecdsa",
+            "to": "ECDSA-based collaborative signing method of claim 1, wherein the user side a and the server side S respectively use a random number generator to generate new random numbers, perform partial private key update, and respectively update the signature collaborative data PtKAAnd PtKSThe method comprises the following steps: the user terminal",
+            "edge_type": "SIMILAR_TO",
+            "weight": 0.5226,
+            "entity_a": null,
+            "entity_b": null
+          }
+        ],
+        "hop_count": 2
+      },
       "audit_status": "MACHINE_ASSISTED_VERIFICATION"
     },
     {
-      "traceability_id": "TRC-5B579BDAD0B3-1782276249",
-      "timestamp": "2026-06-24T04:44:09Z",
-      "severity": "MODERATE",
-      "category": "Patent_Concept",
-      "target_entity": "a cryptographic hashing module",
-      "formal_confidence": 0.45,
-      "recommended_action": "Standard review.",
-      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 a cryptographic hashing module",
+      "traceability_id": "TRC-6EB3F4083B17-1782646365",
+      "timestamp": "2026-06-28T11:32:45Z",
+      "severity": "UNKNOWN",
+      "category": "ip_conflict",
+      "target_entity": null,
+      "question": "Given your whitepaper claims of a proprietary ECDSA signature verification engine that supposedly operates entirely independently from third-party cryptographic libraries (Claim ID: Claim2), how have you ensured non-infringement on patent US11456789, held by CompetitorX Inc. and currently active? Can we see the detailed freedom-to-operate analysis or a license that confirms your engine does not utilize any steps as described in this Active U.S. Patent #'s claim?",
+      "formal_confidence": 0.497,
+      "recommended_action": "Review the generated question and provenance for auditor follow-up.",
+      "evidence_chain": {
+        "nodes": [
+          {
+            "node_id": "claim_0005",
+            "node_type": "Claim",
+            "label": "claim_0005",
+            "metadata": {
+              "text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "full_text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "claim_type": "security",
+              "confidence": 0.65,
+              "page": 1
+            }
+          },
+          {
+            "node_id": "ecdsa",
+            "node_type": "Library",
+            "label": "ecdsa",
+            "metadata": {
+              "category": "Utility / Other",
+              "ecosystem": "PyPI"
+            }
+          },
+          {
+            "node_id": "ECDSA-based collaborative signing method according to claim 1, wherein the server side S is according to RACalculating a first part r of the ECDSA signature and generating a temporary second part ps of the signature from h comprises the steps of: the server S",
+            "node_type": "Patent",
+            "label": "ECDSA-based collaborative signing method according to claim 1, wherein the server side S is according to RACalculating a first part r of the ECDSA signature and generating a temporary second part ps of the signature from h comprises the steps of: the server S",
+            "metadata": {
+              "patent_id": "patent_CN110138567B",
+              "assignee": "CompetitorX Inc.",
+              "jurisdiction": "US",
+              "status": "ACTIVE",
+              "legal_risk_flag": true,
+              "risk": "high"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "claim_0005",
+            "to": "ecdsa",
+            "edge_type": "IMPLEMENTED_BY",
+            "weight": 0.5294,
+            "entity_a": null,
+            "entity_b": null
+          },
+          {
+            "from": "ecdsa",
+            "to": "ECDSA-based collaborative signing method according to claim 1, wherein the server side S is according to RACalculating a first part r of the ECDSA signature and generating a temporary second part ps of the signature from h comprises the steps of: the server S",
+            "edge_type": "SIMILAR_TO",
+            "weight": 0.4959,
+            "entity_a": null,
+            "entity_b": null
+          }
+        ],
+        "hop_count": 2
+      },
       "audit_status": "MACHINE_ASSISTED_VERIFICATION"
     },
     {
-      "traceability_id": "TRC-74FFA74E9075-1782276249",
-      "timestamp": "2026-06-24T04:44:09Z",
-      "severity": "MODERATE",
-      "category": "Patent_Concept",
-      "target_entity": "the user password",
-      "formal_confidence": 0.405,
-      "recommended_action": "Standard review.",
-      "evidence_chain": "Claim_0: Company: ExpenseNinja Core Tec... \u2794 hashlib \u2794 The hashing module \u2794 the user password",
+      "traceability_id": "TRC-C766FFB76C01-1782646365",
+      "timestamp": "2026-06-28T11:32:45Z",
+      "severity": "UNKNOWN",
+      "category": "ip_conflict",
+      "target_entity": null,
+      "question": "Given your company's proprietary ECDSA signature verification engine claims independence from third-party cryptographic libraries on page 1 of your whitepaper, but referencing 'ecdsa', which is patented under Patent ID CN110138567B held by CompetitorX Inc. and currently active in the US (as indicated by high legal risk flags), how can you demonstrate that your implementation does not encroach upon this specific U.S. patent, or have you acquired a non-infringement opinion to assure freedom of operation?",
+      "formal_confidence": 0.4835,
+      "recommended_action": "Review the generated question and provenance for auditor follow-up.",
+      "evidence_chain": {
+        "nodes": [
+          {
+            "node_id": "claim_0005",
+            "node_type": "Claim",
+            "label": "claim_0005",
+            "metadata": {
+              "text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "full_text": "Claim 2 - ECDSA Signature Verification Engine Our custom ECDSA signature verification engine is built entirely in-house and does not depend on any third-party cryptographic libraries.",
+              "claim_type": "security",
+              "confidence": 0.65,
+              "page": 1
+            }
+          },
+          {
+            "node_id": "ecdsa",
+            "node_type": "Library",
+            "label": "ecdsa",
+            "metadata": {
+              "category": "Utility / Other",
+              "ecosystem": "PyPI"
+            }
+          },
+          {
+            "node_id": "ID of the user AARetrieve database, retrieve data PtKS\uff1d{IDA,xS,g,N,N2,ekA,kS,exA,otxS}\uff1b The server side S calculates the commitment: (r)x,ry)\uff1dR\uff1dkS\u00b7RA\uff1bryThe coordinates of the point R in the y-axis direction are represented; the server side S computes a first part of the ECDSA signature: r \u2550 rxmod q\uff1b The server side S calculates a temporary second part of the signature: ps \u2550 kS)-1(h+r\u00d7otxS)mod q\u3002 7",
+            "node_type": "Patent",
+            "label": "ID of the user AARetrieve database, retrieve data PtKS\uff1d{IDA,xS,g,N,N2,ekA,kS,exA,otxS}\uff1b The server side S calculates the commitment: (r)x,ry)\uff1dR\uff1dkS\u00b7RA\uff1bryThe coordinates of the point R in the y-axis direction are represented; the server side S computes a first part of the ECDSA signature: r \u2550 rxmod q\uff1b The server side S calculates a temporary second part of the signature: ps \u2550 kS)-1(h+r\u00d7otxS)mod q\u3002 7",
+            "metadata": {
+              "patent_id": "patent_CN110138567B",
+              "assignee": "CompetitorX Inc.",
+              "jurisdiction": "US",
+              "status": "ACTIVE",
+              "legal_risk_flag": true,
+              "risk": "high"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "claim_0005",
+            "to": "ecdsa",
+            "edge_type": "IMPLEMENTED_BY",
+            "weight": 0.5294,
+            "entity_a": null,
+            "entity_b": null
+          },
+          {
+            "from": "ecdsa",
+            "to": "ID of the user AARetrieve database, retrieve data PtKS\uff1d{IDA,xS,g,N,N2,ekA,kS,exA,otxS}\uff1b The server side S calculates the commitment: (r)x,ry)\uff1dR\uff1dkS\u00b7RA\uff1bryThe coordinates of the point R in the y-axis direction are represented; the server side S computes a first part of the ECDSA signature: r \u2550 rxmod q\uff1b The server side S calculates a temporary second part of the signature: ps \u2550 kS)-1(h+r\u00d7otxS)mod q\u3002 7",
+            "edge_type": "SIMILAR_TO",
+            "weight": 0.4693,
+            "entity_a": null,
+            "entity_b": null
+          }
+        ],
+        "hop_count": 2
+      },
       "audit_status": "MACHINE_ASSISTED_VERIFICATION"
     },
     {
-      "traceability_id": "TRC-94208FDDE20D-1782276249",
-      "timestamp": "2026-06-24T04:44:09Z",
-      "severity": "CRITICAL",
-      "category": "Proprietary Claim Mismatch",
-      "target_entity": "hashlib",
-      "formal_confidence": 0.95,
-      "recommended_action": "Technical Clarification: Require founders to explain the discrepancy.",
-      "evidence_chain": "Marketing Pitch: 'Company: ExpenseNinja Core Technology: Our platfor...' \u2794 Review Indicator: 'hashlib'",
-      "audit_status": "MACHINE_ASSISTED_VERIFICATION"
-    },
-    {
-      "traceability_id": "TRC-27F00515AD76-1782276249",
-      "timestamp": "2026-06-24T04:44:09Z",
-      "severity": "CRITICAL",
-      "category": "Proprietary Claim Mismatch",
-      "target_entity": "copyleft_crypto_engine",
-      "formal_confidence": 0.95,
-      "recommended_action": "Technical Clarification: Require founders to explain the discrepancy.",
-      "evidence_chain": "Marketing Pitch: 'Company: ExpenseNinja Core Technology: Our platfor...' \u2794 Review Indicator: 'copyleft_crypto_engine'",
+      "traceability_id": "TRC-F8FD23C46819-1782646365",
+      "timestamp": "2026-06-28T11:32:45Z",
+      "severity": "UNKNOWN",
+      "category": "claim_contradiction",
+      "target_entity": null,
+      "question": "Given your whitepaper claims proprietary advantages of this multi-round hashing scheme over SHA-256 under adversarial conditions, can you provide us with an artifact showing exactly what differentiates your implementation from Python's standard 'hashlib', and how it ensures enhanced security?",
+      "formal_confidence": 0.6479,
+      "recommended_action": "Review the generated question and provenance for auditor follow-up.",
+      "evidence_chain": {
+        "nodes": [
+          {
+            "node_id": "claim_0004",
+            "node_type": "Claim",
+            "label": "claim_0004",
+            "metadata": {
+              "text": "The module implements a novel multi-round hashing scheme with salted digest chaining that exceeds SHA-256 security guarantees under adversarial conditions.",
+              "full_text": "The module implements a novel multi-round hashing scheme with salted digest chaining that exceeds SHA-256 security guarantees under adversarial conditions.",
+              "claim_type": "security",
+              "confidence": 0.65,
+              "page": 1
+            }
+          },
+          {
+            "node_id": "hashlib",
+            "node_type": "Library",
+            "label": "hashlib",
+            "metadata": {
+              "module_type": "stdlib"
+            }
+          }
+        ],
+        "edges": [
+          {
+            "from": "claim_0004",
+            "to": "hashlib",
+            "edge_type": "IMPLEMENTED_BY",
+            "weight": 0.6479,
+            "entity_a": null,
+            "entity_b": null
+          }
+        ],
+        "hop_count": 1
+      },
       "audit_status": "MACHINE_ASSISTED_VERIFICATION"
     }
   ]

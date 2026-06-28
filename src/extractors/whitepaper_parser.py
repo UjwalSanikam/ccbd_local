@@ -330,7 +330,12 @@ def _detect_claim_type(sentence: str) -> tuple[str, float]:
         if norm > best_norm_score:
             best_norm_score = norm
             best_type = ctype
-    confidence = round(min(best_norm_score * 1.5, 1.0), 2)   # scale up slightly
+    confidence = round(min(best_norm_score * 1.5, 1.0), 2)
+
+# Boost confidence for technical claims
+    if best_type != "general":
+        confidence = max(confidence, 0.65)
+
     return best_type, confidence
 
 
@@ -367,7 +372,30 @@ def _classify_feature_category(sentence: str) -> str:
     if any(w in s for w in ["network", "p2p", "peer", "gossip", "libp2p", "tcp", "udp"]):
         return "network"
     return "general"
+def _clean_claim_sentence(sentence: str) -> str:
+    """
+    Clean extracted claims for downstream knowledge fusion / MHQG.
+    Removes PDF artifacts, company headers, and broken line splits.
+    """
+    cleaned = sentence.replace("\n", " ")
+    cleaned = " ".join(cleaned.split())
 
+    headers_to_remove = [
+        "Company: ExpenseNinja Core Technology:",
+        "Core Technology:",
+        "Company:"
+    ]
+
+    for header in headers_to_remove:
+        cleaned = cleaned.replace(header, "")
+
+    # Fix common broken words from PDF extraction
+    cleaned = cleaned.replace("open- source", "open-source")
+    cleaned = cleaned.replace("open - source", "open-source")
+    cleaned = cleaned.replace("multi- hop", "multi-hop")
+    cleaned = cleaned.replace("white paper", "whitepaper")
+
+    return cleaned.strip()
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PDF reading backends
@@ -563,19 +591,21 @@ class WhitepaperParser:
                 )
                 if has_signal:
                     claim_counter += 1
+                    cleaned_claim = _clean_claim_sentence(sentence)
+
                     technical_claims.append(TechnicalClaim(
-                        claim_id=f"claim_{claim_counter:04d}",
-                        page=page_num,
-                        sentence=sentence,
-                        claim_type=claim_type,
-                        confidence=confidence,
-                        buzzwords=buzzwords,
-                        numeric_assertions=[
+                    claim_id=f"claim_{claim_counter:04d}",
+                    page=page_num,
+                    sentence=cleaned_claim,
+                    claim_type=claim_type,
+                    confidence=confidence,
+                    buzzwords=buzzwords,
+                    numeric_assertions=[
                             f"{n[0]} {n[1]}" if isinstance(n, tuple) else str(n)
                             for n in numerics
-                        ],
-                        entities=entities,
-                    ))
+                    ],
+                    entities=entities,
+    ))
 
                 if buzzwords:
                     assertion_counter += 1
